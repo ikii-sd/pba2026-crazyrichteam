@@ -1,0 +1,38 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# requirements.txt
+# Proyek  : Analisis Sentimen & Emosi Ulasan E-Commerce Bahasa Indonesia
+# Dataset : PRDECT-ID
+# Tim     : Crazy Rich Team — PBA 2026
+#
+# Install : pip install -r requirements.txt
+# ─────────────────────────────────────────────────────────────────────────────
+
+# ── Data manipulation ─────────────────────────────────────────────────────────
+pandas>=1.5.0
+numpy>=1.23.0
+
+# ── Visualisasi ───────────────────────────────────────────────────────────────
+matplotlib>=3.6.0
+seaborn>=0.12.0
+wordcloud>=1.9.0
+Pillow>=9.0.0
+
+# ── NLP — Bahasa Indonesia ────────────────────────────────────────────────────
+PySastrawi>=1.2.0          # Stemming & stopword removal Bahasa Indonesia
+nltk>=3.8.0                # Tokenisasi & utilitas NLP umum
+emoji>=2.0.0               # Parsing & demojize emoji
+
+# ── Jupyter Notebook ──────────────────────────────────────────────────────────
+jupyter>=1.0.0
+notebook>=6.5.0
+ipykernel>=6.0.0
+ipython>=8.0.0
+
+# ── Progress bar ──────────────────────────────────────────────────────────────
+tqdm>=4.64.0               # Progress bar untuk batch_clean()
+
+# ── Opsional: modeling (Checkpoint 3+) ────────────────────────────────────────
+# scikit-learn>=1.2.0
+# imbalanced-learn>=0.10.0   # SMOTE untuk kelas imbalanced
+# transformers>=4.30.0       # IndoBERT / mBERT
+# torch>=2.0.0
