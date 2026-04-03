@@ -5,8 +5,6 @@
 > **Dataset:** [PRDECT-ID](https://www.kaggle.com/datasets/octopusfish/prdect-id-indonesian-e-commerce-product-reviews) — Indonesian E-Commerce Product Reviews Dataset <br>
 > **Deployment (Hugging Face):** 
 > - **[ML Model (PyCaret)](https://huggingface.co/spaces/Hash-SD/analisis-sentimen-ecommerce)**  
-> - **[DL Model](https://huggingface.co/spaces/Hash-SD/analisis-sentimen-ecommerce-dl)**
-
 ---
 
 ## 👥 Anggota Kelompok 7
