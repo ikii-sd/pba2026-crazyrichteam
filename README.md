@@ -15,8 +15,8 @@ pinned: false
 > **Mata Kuliah:** Pengolahan Bahasa Alami (PBA) — 2026 <br>
 > **Tim:** Crazy Rich Team <br>
 > **Dataset:** [PRDECT-ID](https://www.kaggle.com/datasets/jocelyndumlao/prdect-id-indonesian-emotion-classification/data) — Indonesian E-Commerce Product Reviews Dataset <br>
-> **Deployment (Hugging Face):** 
-> - **[ML Model (PyCaret)](https://huggingface.co/spaces/Hash-SD/ecommerce-sentiment-analysis)**  
+> **🚀 Live Demo:** [**E-Commerce Sentiment & Emotion Analyzer** on HuggingFace Spaces](https://huggingface.co/spaces/Hash-SD/ecommerce-sentiment-emotion-v2)
+
 ---
 
 ## 👥 Anggota Kelompok 7
@@ -105,7 +105,7 @@ pba2026-crazyrichteam/
 
 ## 🚀 Gradio App — Demo Interaktif
 
-File `app.py` di root proyek adalah aplikasi Gradio siap deploy ke **Hugging Face Spaces**.
+File `app.py` di root proyek adalah aplikasi Gradio yang menggunakan **PyTorch BiLSTM** dan siap deploy ke **Hugging Face Spaces**.
 
 ### Fitur Aplikasi
 
@@ -114,21 +114,23 @@ File `app.py` di root proyek adalah aplikasi Gradio siap deploy ke **Hugging Fac
 | **Input** | Teks ulasan produk e-commerce bahasa Indonesia |
 | **Output 1** | Sentimen: `Positif` / `Negatif` + confidence score |
 | **Output 2** | Emosi: `Bahagia` / `Sedih` / `Takut` / `Cinta` / `Marah` + confidence score |
-| **Preprocessing** | Pipeline 14-langkah (sama persis dengan training) |
-| **Model Sentimen** | Ridge Classifier + TF-IDF (F1-macro ≈ 0.91, AUC ≈ 0.96) |
-| **Model Emosi** | Complement NB + TF-IDF |
-| **Theme** | Gradio Soft |
+| **Model Sentimen** | BiLSTM (Bidirectional LSTM) + embedding layer |
+| **Model Emosi** | BiLSTM (shared dengan sentiment, separate output head) |
+| **Vocabulary** | 6.155 tokens dari PRDECT-ID dataset |
+| **Max Sequence Length** | 64 tokens (dengan padding/truncation) |
+| **Framework** | PyTorch + Gradio |
 
 ### Cara Menjalankan Lokal
 
 ```bash
-# 1. Pastikan model sudah di-generate (jalankan notebook di folder notebooks/ dulu)
+# 1. Install dependensi (termasuk PyTorch)
+pip install -r requirements.txt
 
 # 2. Jalankan Gradio app
 python app.py
 ```
 
-App akan berjalan di `http://localhost:7862`.
+App akan berjalan di `http://localhost:7860`.
 
 ### Contoh Ulasan yang Bisa Dicoba
 

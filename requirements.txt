@@ -26,10 +26,10 @@ emoji>=2.0.0               # Parsing & demojize emoji
 scikit-learn==1.7.0        # Model klasifikasi (Ridge, LinearSVC, NB, dsb.)
 joblib>=1.2.0              # Simpan & muat model .pkl
 
-# ── HuggingFace Hub ────────────────────────────────────────────────────────────
+# ── UI & Deployment ────────────────────────────────────────────────────────────
+gradio==4.31.0              # Web UI framework para HuggingFace Spaces
 # Note: HF Spaces otomatis install gradio==4.31.0, jadi kita pin huggingface_hub
-# yang kompatibel dengan Gradio 4.31.0 (versi lama yang masih punya HfFolder)
-huggingface-hub==0.21.4    # Compatible dengan Gradio 4.31.0 (masih punya HfFolder)
+huggingface-hub==0.21.4     # Compatible dengan Gradio 4.31.0 (masih punya HfFolder)
 
 # ── Jupyter Notebook ──────────────────────────────────────────────────────────
 jupyter>=1.0.0
@@ -40,7 +40,11 @@ ipython>=8.0.0
 # ── Progress bar ──────────────────────────────────────────────────────────────
 tqdm>=4.64.0               # Progress bar untuk batch_clean()
 
+# ── Deep Learning ─────────────────────────────────────────────────────────────
+torch>=2.0.0                # PyTorch untuk BiLSTM model
+torchaudio>=2.0.0           # Audio utilities (required by torch)
+torchvision>=0.15.0         # Vision utilities (required by torch)
+
 # ── Opsional: modeling lanjutan ───────────────────────────────────────────────
 # imbalanced-learn>=0.10.0   # SMOTE untuk kelas imbalanced
 # transformers>=4.30.0       # IndoBERT / mBERT
-# torch>=2.0.0
