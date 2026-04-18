@@ -4,8 +4,8 @@
 > **Tim:** Crazy Rich Team <br>
 > **Dataset:** [PRDECT-ID](https://www.kaggle.com/datasets/jocelyndumlao/prdect-id-indonesian-emotion-classification/data) — Indonesian E-Commerce Product Reviews Dataset <br>
 > **🚀 Live Demos:**
-> - **[ML Model (Legacy)](https://huggingface.co/spaces/Hash-SD/ecommerce-sentiment-analysis)** — Scikit-learn based sentiment analyzer
-> - **[Deep Learning Model (Production)](https://huggingface.co/spaces/Hash-SD/ecommerce-sentiment-emotion-dl)** — PyTorch BiLSTM sentiment & emotion analyzer
+> - **[ML Model](https://huggingface.co/spaces/Hash-SD/ecommerce-sentiment-analysis)** — Scikit-learn based sentiment analyzer
+> - **[Deep Learning Model](https://huggingface.co/spaces/Hash-SD/ecommerce-sentiment-emotion-dl)** — PyTorch BiLSTM sentiment & emotion analyzer
 
 ---
 
