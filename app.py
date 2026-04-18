@@ -69,10 +69,30 @@ model = SimpleBiLSTM(
 print("Loading pretrained weights...")
 model_path = MODEL_DL_DIR / "saved_models" / "best_model.pt"
 checkpoint = torch.load(model_path, map_location=DEVICE)
-if isinstance(checkpoint, dict) and "model_state_dict" in checkpoint:
-    model.load_state_dict(checkpoint["model_state_dict"])
+
+# Handle different checkpoint formats
+if isinstance(checkpoint, dict):
+    if "model_state_dict" in checkpoint:
+        model.load_state_dict(checkpoint["model_state_dict"])
+    elif "model_state" in checkpoint:
+        model.load_state_dict(checkpoint["model_state"])
+    elif "embedding.weight" in checkpoint:
+        # Direct state dict
+        model.load_state_dict(checkpoint)
+    else:
+        # Try to load whatever is in the checkpoint
+        print(f"Warning: Unknown checkpoint structure. Keys: {list(checkpoint.keys())}")
+        if len(checkpoint) > 0:
+            # Try the first value if it looks like a state dict
+            first_val = list(checkpoint.values())[0]
+            if isinstance(first_val, dict):
+                model.load_state_dict(first_val)
+            else:
+                model.load_state_dict(checkpoint)
 else:
+    # Direct state dict
     model.load_state_dict(checkpoint)
+
 model = model.to(DEVICE)
 model.eval()
 
@@ -194,7 +214,6 @@ demo = gr.Interface(
     stop_btn="Berhenti",
     examples=EXAMPLES,
     cache_examples=False,
-    flagging_mode="never",
 )
 
 if __name__ == "__main__":
