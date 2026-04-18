@@ -1,0 +1,13 @@
+{
+  "sentiment_label2id": {
+    "Negative": 0,
+    "Positive": 1
+  },
+  "emotion_label2id": {
+    "Anger": 0,
+    "Fear": 1,
+    "Happy": 2,
+    "Love": 3,
+    "Sadness": 4
+  }
+}

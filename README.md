@@ -15,8 +15,6 @@
 | 2  | Ahmad Rizqi       | 122450138 |
 | 3  | Ibrahim Al-kahfi  | 122450100 |
 
-> *Proyek ini dikembangkan dengan dibantu oleh Claude dan Gemini.*
-
 ---
 
 ## 🎯 Deskripsi Proyek
@@ -92,17 +90,6 @@ pba2026-crazyrichteam/
 
 ---
 
-## ✅ Checklist Checkpoint 2
-
-### Pembagian 3 Commit
-
-| # | Commit | File | Status | Deskripsi |
-|---|--------|------|--------|-----------|
-| 1 | `feat(eda): add distribution, wordcloud, ngram plots` | `notebooks/01_eda_preprocessing.ipynb` | ✅ | Load data mentah, plot distribusi label, WordCloud, n-gram, analisis emoji |
-| 2 | `feat(preprocessing): add clean_text and batch_clean module` | `src/preprocessing.py`, `src/__init__.py` | ✅ | Modul Python 14-step pipeline, kamus slang 140+ entri, singleton Sastrawi |
-| 3 | `feat(preprocessing): apply module and export cleaned_dataset.csv` | `notebooks/01_eda_preprocessing.ipynb`, `data/clean/` | ✅ | Import modul, sanity check, batch_clean() seluruh DataFrame, export CSV |
-
----
 
 ## 🚀 Gradio App — Demo Interaktif
 
@@ -280,67 +267,6 @@ Menjalankan 8 kasus uji dari terminal tanpa perlu membuka Jupyter.
 
 ---
 
-## 📤 Output Checkpoint 2
-
-Setelah notebook dijalankan penuh, file berikut terbuat secara otomatis:
-
-```
-data/
-├── clean/
-│   └── cleaned_dataset.csv          ← ~5.391 baris, 13 kolom, UTF-8 with BOM
-└── figures/
-    ├── 01_label_distribution.png
-    ├── 02_crosstab_emotion_sentiment.png
-    ├── 03_category_distribution.png
-    ├── 04_text_length_distribution.png
-    ├── 05_top_unigram_raw.png
-    ├── 06_top_bigram_raw.png
-    ├── 07_wordcloud_all_raw.png
-    ├── 08_wordcloud_per_sentiment_raw.png
-    ├── 09_wordcloud_per_emotion_raw.png
-    ├── 10_top_emoji.png
-    ├── 11_before_after_length.png
-    └── 12_wordcloud_clean_sentiment.png
-```
-
----
-
-## 📦 Dependensi Utama
-
-| Library | Versi Min | Kegunaan |
-|---------|-----------|----------|
-| `pandas` | 1.5+ | Manipulasi DataFrame |
-| `numpy` | 1.23+ | Operasi numerik |
-| `matplotlib` | 3.6+ | Visualisasi dasar |
-| `seaborn` | 0.12+ | Visualisasi statistik |
-| `wordcloud` | 1.9+ | Word Cloud |
-| `nltk` | 3.8+ | Tokenisasi & utilitas NLP |
-| `PySastrawi` | 1.2+ | Stemming & stopword Bahasa Indonesia |
-| `emoji` | 2.0+ | Parsing & demojize emoji |
-| `tqdm` | 4.64+ | Progress bar `batch_clean()` |
-| `scikit-learn` | 1.2+ | Model klasifikasi (Ridge, LinearSVC, NB) |
-| `joblib` | 1.2+ | Simpan & muat model `.pkl` |
-| `gradio` | 4.0+ | Web UI interaktif (Hugging Face Spaces) |
-
----
-
-## 🗺️ Panduan Commit Git
-
-```bash
-# ── Commit 1 — EDA Notebook ───────────────────────────────────────────────────
-git add notebooks/01_eda_preprocessing.ipynb data/figures/
-git commit -m "feat(eda): add distribution, wordcloud, ngram plots"
-
-# ── Commit 2 — Modul Preprocessing ───────────────────────────────────────────
-git add src/preprocessing.py src/__init__.py requirements.txt .gitignore
-git commit -m "feat(preprocessing): add clean_text and batch_clean module"
-
-# ── Commit 3 — Eksekusi & Export ─────────────────────────────────────────────
-git add notebooks/01_eda_preprocessing.ipynb data/clean/cleaned_dataset.csv
-git commit -m "feat(preprocessing): apply module and export cleaned_dataset.csv"
-```
-
----
 
 ## 📄 Lisensi
 
