@@ -75,13 +75,13 @@ data/figures/
 data/raw/
 
 # ── Model artefak ─────────────────────────────────────────────────────────────
-models/
-*.pkl
-*.joblib
-*.h5
-*.pt
-*.pth
-*.onnx
+# Keep binary artifacts ignored, but allow versioning code/docs under models
+models/*.pkl
+models/*.joblib
+models/*.h5
+models/*.pt
+models/*.pth
+models/*.onnx
 
 # ── Logs & temp ───────────────────────────────────────────────────────────────
 logs/

@@ -1,0 +1,32 @@
+Dataset Analysis Report
+=======================
+
+1. Total Samples: 5391
+2. Columns: ['Category', 'Product Name', 'Location', 'Price', 'Overall Rating', 'Number Sold', 'Customer Rating', 'Customer Review', 'clean_review', 'Sentiment', 'sentiment_label', 'Emotion', 'emotion_label']
+3. Text Column: clean_review
+
+4. Sentiment Label:
+   - Column: Sentiment
+   - Unique values: ['Negative', 'Positive']
+   - Distribution: {'Negative': 2816, 'Positive': 2575}
+
+5. Emotion Label:
+   - Column: Emotion
+   - Unique values: ['Anger', 'Fear', 'Happy', 'Love', 'Sadness']
+   - Distribution: {'Happy': 1768, 'Sadness': 1201, 'Fear': 917, 'Love': 807, 'Anger': 698}
+
+6. Text Statistics:
+   - Min words: 0
+   - Max words: 107
+   - Avg words: 9.8739
+   - Suggested max_seq_len: 64
+
+7. Missing Values:
+   - Yes
+   - Detail: Total missing values = 5, all located in column 'clean_review'
+
+8. Recommendation:
+   - Use 'clean_review' as input text, with preprocessing to drop empty/missing rows.
+   - Use 'Sentiment' (2 classes) and 'Emotion' (5 classes) as multi-output labels.
+   - Set max_seq_len to 64 for good speed-memory tradeoff (p95 length is 25, p99 is 44), while still covering almost all texts.
+   - Keep vocab size <= 10,000 and use a lightweight BiLSTM configuration (Embedding 128, Hidden 128) to stay below 2M parameters and train quickly.
