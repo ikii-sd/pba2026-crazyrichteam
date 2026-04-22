@@ -51,6 +51,7 @@ Hal ini terbukti merupakan resep jitu nan esensial dalam meminimalisir kemungkin
 - 😢 **Sedih** (Keluhan dengan corak pasrah, ekspektasi kerugian finansial, curahan patah hati)
 - 😨 **Takut** (Diksi indikasi peringatan keraguan, bayangan kekhawatiran produk kurang terjamin)
 - 💕 **Cinta** (Afeksi kesetiaan permanen pada layanan pelanggan, intensitas emosi kasih sayang)
+- 😡 **Marah** (Amarah, frustrasi pesanan rusak parut, klaim menantang frontal kerugian pembeli riil) 🧠
 
 ---
 
