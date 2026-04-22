@@ -50,6 +50,7 @@ Hal ini terbukti merupakan resep jitu nan esensial dalam meminimalisir kemungkin
 - 😃 **Bahagia** (Himpunan kalimat dengan corak kegirangan, penerimaan syukur, gaya tawa gembira)
 - 😢 **Sedih** (Keluhan dengan corak pasrah, ekspektasi kerugian finansial, curahan patah hati)
 - 😨 **Takut** (Diksi indikasi peringatan keraguan, bayangan kekhawatiran produk kurang terjamin)
+- 💕 **Cinta** (Afeksi kesetiaan permanen pada layanan pelanggan, intensitas emosi kasih sayang)
 
 ---
 
