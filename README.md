@@ -34,6 +34,7 @@ Untuk dapat menembus dan menghancurkan batas kendala dari proses manual linguist
 Langkah fasa ini mencakup:
 - Reduksi pola angka menjadi string.
 - Normalisasi gaya bahasa *slang* internet yang tidak standar menjadi tata bahasa baku.
+- Filterisasi dan penghancuran *noise* yang mengganggu performa perhitungan jarak kata.
 
 ---
 
