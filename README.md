@@ -39,7 +39,7 @@ Langkah fasa ini mencakup:
 Pada titik tahapan prapemrosesan ini rampung dan selesai dengan aman, koleksi teks bersih ini baru akan secara aman disusupkan dan direpresentasikan secara matematis ke dalam model komputasi neural network modern.
 
 **Rincian Terstruktur Profil Dataset PRDECT-ID:**
-Dataset PRDECT-ID yang kami jadikan pijakan tumpuan
+Dataset PRDECT-ID yang kami jadikan pijakan tumpuan ruang latih ini terbilang sangat padat, otentik, dan tak kalah bervariasi kekayaannya.
 
 ---
 
