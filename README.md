@@ -36,6 +36,7 @@ Langkah fasa ini mencakup:
 - Normalisasi gaya bahasa *slang* internet yang tidak standar menjadi tata bahasa baku.
 - Filterisasi dan penghancuran *noise* yang mengganggu performa perhitungan jarak kata.
 - Penerjemahan leksikografis ikon grafis emoji ke padanan kata teks berbahasa Indonesia.
+Pada titik tahapan prapemrosesan ini rampung dan selesai dengan aman,
 
 ---
 
