@@ -25,6 +25,8 @@ Proyek ini membangun pipeline NLP end-to-end untuk menganalisis **sentimen** (Po
 dan **emosi** (Bahagia, Sedih, Takut, Cinta, Marah) dari ulasan produk e-commerce berbahasa
 Indonesia menggunakan dataset PRDECT-ID (5.400 ulasan, 29 kategori produk).
 
+**Latar Belakang & Masalah Utama:**
+
 ---
 
 ## 📐 Arsitektur Modular
