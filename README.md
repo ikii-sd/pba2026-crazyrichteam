@@ -1,110 +1,291 @@
-# Klasifikasi Multi-Target: Sentimen & Emosi Ulasan E-Commerce Indonesia (PRDECT-ID)
+# 🛍️ Analisis Sentimen & Emosi Ulasan E-Commerce Bahasa Indonesia
 
-Repositori ini menyajikan implementasi *machine learning* utuh untuk klasifikasi teks *multi-output* (Analisis Sentimen dan Emosi) pada *dataset* ulasan e-commerce berbahasa Indonesia (PRDECT-ID). Dibangun di atas fondasi arsitektur **Bidirectional LSTM (BiLSTM)** menggunakan **PyTorch**, repositori ini telah dirancang ulang agar menjunjung tinggi prinsip *clean code*, terstruktur secara modular, dan berada pada standar kualitas *production-ready*.
-
----
-
-## ✨ Fitur Utama
-
-- **Data Pipeline Terpusat:** Modul `dataloader.py` mengorkestrasi pemrosesan teks, prapemrosesan dinamis (*dynamic vocabulary mapping*), konversi tensor, hingga pemecahan himpunan data pelatihan, validasi, dan pengujian secara statis (`80:10:10`).
-- **Orkestrasi Pelatihan Otomatis (*Hands-off Training*):** Modul `train.py` merangkum logika iterasi epoch, validasi silang, penerapan *Early Stopping*, hingga pemantauan *learning rate scheduler* secara mandiri.
-- **Manajemen Lingkungan Eksperimen:** Fungsi `setup_run_env` (berada di modul `utils.py`) secara cerdas merekam dan mengalokasikan artefak setiap *run* eksperimen secara terisolasi tanpa ada risiko tumpang tindih fail *output*.
-- **Sistem Registri Model Cerdas:** Dukungan pertukaran varian *hyperparameter* atau pergantian arsitektur (dari *Baseline* 1 Lapis hingga edisi komputasi penuh dengan matriks dimensi *Large*) hanya dengan mengubah sebaris identitas konfigurasi.
-- **Perekaman Log Komprehensif:** Dukungan ganda *logging* yang terintegrasi di terminal (*console*) dan disimpan secara pararel pada arsip fail `outputs/logs/` bernomor presisi.
+> **Mata Kuliah:** Pengolahan Bahasa Alami (PBA) — 2026 <br>
+> **Tim:** Crazy Rich Team <br>
+> **Dataset:** [PRDECT-ID](https://www.kaggle.com/datasets/jocelyndumlao/prdect-id-indonesian-emotion-classification/data) — Indonesian E-Commerce Product Reviews Dataset <br>
+> **🚀 Live Demos:**
+> - **[ML Model](https://huggingface.co/spaces/Hash-SD/ecommerce-sentiment-analysis)** — Scikit-learn based sentiment analyzer
+> - **[Deep Learning Model](https://huggingface.co/spaces/Hash-SD/ecommerce-sentiment-emotion-dl)** — PyTorch BiLSTM sentiment & emotion analyzer
 
 ---
 
-## 🛠 Prasyarat (*Prerequisites*)
+## 👥 Anggota Kelompok 7
 
-Pastikan infrastruktur perangkat lunak Anda memenuhi prasyarat berikut sebelum memulai rilis:
-
-- **Sistem Operasi**: Kompatibel dengan Windows, macOS, maupun distribusi Linux populer.
-- **Bahasa Pemrograman**: Python versi `3.9` atau `3.10` dan ke atas.
-- **Akselerasi Perangkat Keras (Opsional)**: Repositori mendeteksi ketersediaan platform CUDA (*Compute Unified Device Architecture*) secara mandiri. Bila tidak terdeteksi, program otomatis berjalan di atas CPU.
+| No | Nama | NIM |
+|----|------|-----|
+| 1  | Hermawan Manurung | 122450069 |
+| 2  | Ahmad Rizqi       | 122450138 |
+| 3  | Ibrahim Al-kahfi  | 122450100 |
 
 ---
 
-## 🚀 Setup Ekosistem Lokal
+## 🎯 Deskripsi Proyek
 
-Lekaskan panduan persiapan berikut dari *root* repositori pada aplikasi konsol/terminal. Sangat disarankan untuk membentuk lingkungan isolasi mandiri (*virtual environment*).
+Proyek ini membangun pipeline NLP end-to-end untuk menganalisis **sentimen** (Positif / Negatif)
+dan **emosi** (Bahagia, Sedih, Takut, Cinta, Marah) dari ulasan produk e-commerce berbahasa
+Indonesia menggunakan dataset PRDECT-ID (5.400 ulasan, 29 kategori produk).
+
+---
+
+## 📐 Arsitektur Modular
+
+Proyek ini mengikuti prinsip **separation of concerns**:
+
+| File | Tanggung Jawab |
+|------|----------------|
+| `src/preprocessing.py` | **Modul Python murni** — semua logika cleaning, normalisasi slang, stemming |
+| `src/__init__.py` | Package initializer — ekspor fungsi publik |
+| `notebooks/01_eda_preprocessing.ipynb` | **Notebook** — EDA, visualisasi |
+| `notebooks/02_pycaret_automl.ipynb` | **Notebook** — AutoML untuk klasifikasi model |
+| `notebooks/03_training_orchestrator.ipynb` | **Notebook Master** — Orkestrasi eksekusi tanpa *looping* untuk DL Pipeline |
+
+> ⚠️ **Aturan utama:** Fungsi inti seperti komputasi `clean_text()` atau `train()` **TIDAK** lagi ditulis di dalam
+> notebook. Notebook hanyalah sebuah *orchestrator* eksekutif yang mengimpor dan menjalankan modul:
+> ```python
+> from src.dataloader import build_full_pipeline
+> from src.train import fit
+> ```
+
+---
+
+## 🌟 Pembaruan Pipeline Deep Learning (*Production-Ready State*)
+
+Setelah melalui sesi *refactoring* menyeluruh, basis kode kini menerapkan prinsip-prinsip operasional kelas-produksi (*Production-Ready*) dengan sorotan pembaruan poin-poin berikut:
+
+- **Orkestrasi Pelatihan Otomatis:** Menangani logika pelatihan (*train_one_epoch*) bertingkat layaknya *Early Stopping*, *LR Scheduler*, hingga pemantauan metrik validasi langsung melalui skrip `train.py`.
+- **Manajemen Eksperimen (Run Tracker):** Sistem `setup_run_env` di `utils.py` menjebak dan mengalokasikan hasil eksekusi (dinamai otomatis berdasarkan *timestamp*) ke dalam ruang terisolir, bebas dari *conflict-save*.
+- **Hierarki Output Tanpa Polusi File:** Segala jenis *output* (`logs.txt`, metrik `.json`, gambar `*.png`, bobot `*.pt`) didorong masuk ke direktori `/outputs/` dan tidak membayangi berkas fundamental pada folder *root* (dipermanenkan pengabaiannya via `.gitignore`).
+- **Registri Varian Model (Build Factory):** Perpindahan antara model konfigurasi ringan (Basic 1 Layer) dan konfigurasi besar secara gampang dilakukan melalui panggilan sentral tanpa redundansi script file arsitektur.
+- **Standar Reprodusibilitas Penuh:** *Checkpointing* metrik akhir, pembekuan seed variabel deterministik, hingga metode evaluasi yang bisa diulang-kembali pada mesin apa pun.
+
+---
+
+## 📁 Struktur Proyek
+
+```
+pba2026-crazyrichteam/
+│
+├── 📂 src/                                ← Package preprocessing
+│   ├── __init__.py                        ← Package initializer & public exports
+│   └── preprocessing.py                  ← Modul utama: clean_text(), batch_clean()
+│
+├── 📂 notebooks/                          ← Jupyter Notebooks
+│   ├── 01_eda_preprocessing.ipynb        ← EDA + eksekusi preprocessing
+│   └── 02_pycaret_automl.ipynb           ← Skrip notebook melatih model
+│   
+├── 📂 models/                             ← Model terlatih (di-generate notebook 02)
+│   ├── best_ml_model.pkl                 ← Model sentimen terbaik + TF-IDF
+│   ├── best_emotion_model.pkl            ← Model emosi terbaik + TF-IDF
+│   └── tfidf_vectorizer.pkl              ← TF-IDF vectorizer
+│
+├── 📂 data/
+│   ├── clean/
+│   │   └── cleaned_dataset.csv           ← Output preprocessing (di-generate notebook)
+│   ├── figures/                          ← Plot EDA tersimpan (di-generate notebook)
+│   └── PRDECT-ID Dataset.csv             ← Dataset mentah (separator titik koma `;`)
+│
+├── app.py                                ← 🚀 Gradio App
+├── requirements.txt                      ← Daftar dependensi Python
+├── .gitignore
+└── README.md
+```
+
+---
+
+## 📊 Tentang Dataset PRDECT-ID
+
+| Atribut | Detail |
+|---------|--------|
+| Total sampel | 5.400 ulasan |
+| Kategori produk | 29 kategori |
+| Separator CSV | `;` (titik koma) |
+| Encoding | UTF-8 |
+| Label Sentimen | `Positif` (2.578) · `Negatif` (2.820) |
+| Label Emosi | `Bahagia` · `Sedih` · `Takut` · `Cinta` · `Marah` |
+| Kolom teks utama | `Customer Review` |
+
+---
+
+
+## 🚀 Gradio App — Demo Interaktif
+
+File `app.py` di root proyek adalah aplikasi Gradio yang menggunakan **PyTorch BiLSTM** dan siap deploy ke **Hugging Face Spaces**.
+
+### Fitur Aplikasi
+
+| Fitur | Detail |
+|-------|--------|
+| **Input** | Teks ulasan produk e-commerce bahasa Indonesia |
+| **Output 1** | Sentimen: `Positif` / `Negatif` + confidence score |
+| **Output 2** | Emosi: `Bahagia` / `Sedih` / `Takut` / `Cinta` / `Marah` + confidence score |
+| **Model Sentimen** | BiLSTM (Bidirectional LSTM) + embedding layer |
+| **Model Emosi** | BiLSTM (shared dengan sentiment, separate output head) |
+| **Vocabulary** | 6.155 tokens dari PRDECT-ID dataset |
+| **Max Sequence Length** | 64 tokens (dengan padding/truncation) |
+| **Framework** | PyTorch + Gradio |
+
+### Cara Menjalankan Lokal
 
 ```bash
-# 1. Inisialisasi virtual environment
+# 1. Install dependensi (termasuk PyTorch)
+pip install -r requirements.txt
+
+# 2. Jalankan Gradio app
+python app.py
+```
+
+App akan berjalan di `http://localhost:7860`.
+
+### Contoh Ulasan yang Bisa Dicoba
+
+| Ulasan | Prediksi |
+|--------|----------|
+| `"Barang bagus, penjual ramah, pengiriman cepat!"` | Positive / Happy |
+| `"Kecewa, barang rusak dan tidak sesuai deskripsi."` | Negative / Sadness |
+| `"Takut beli lagi, merasa ditipu penjual."` | Negative / Fear |
+| `"Alhamdulillah, produk ori sesuai gambar. Sangat puas!"` | Positive / Happy |
+
+---
+
+## ⚙️ Setup & Instalasi
+
+### 1. Clone Repository
+
+```bash
+git clone https://github.com/<org>/pba2026-crazyrichteam.git
+cd pba2026-crazyrichteam
+```
+
+### 2. Buat Virtual Environment (Rekomendasi)
+
+```bash
 python -m venv venv
 
-# 2.A Aktivasi environment (Bagi pengguna Linux/macOS)
-source venv/bin/activate
-# 2.B Aktivasi environment (Bagi pengguna Windows)
-.\venv\Scripts\activate
+# Windows
+venv\Scripts\activate
 
-# 3. Instalasi perpustakaan (dependencies) terkait sistem
+# Linux / macOS
+source venv/bin/activate
+```
+
+### 3. Install Dependensi
+
+```bash
 pip install -r requirements.txt
 ```
 
----
-
-## 📂 Peletakan Format Dataset
-
-Dokumentasi ini mengabaikan sinkronisasi *cloud tracking version (git)* untuk data mentah sehingga kapasitas git Anda tetap ideal. Taruh pustaka data primer dalam skema folder hierarkis yang menginduk pada lokasi `data/`.
-
-Bentuk peletakan idealnya adalah:
-
-```text
-├── data/
-│   ├── PRDECT-ID Dataset.csv          # File Mentah
-│   └── clean/
-│       └── cleaned_dataset.csv        # Hasil eksekusi final (preprocessing)
-```
-
-> **Catatan Penting**: Identitas dan jalur baca (path) menuju `data/` telah diabadikan ketat di dalam `.gitignore`. Dataset berstatus sensitif Anda tidak akan pernah terbuka untuk dipublikasi ke dunia melalui git *pull/push* log.
-
----
-
-## 💻 Panduan Eksekusi
-
-### Metode A: Integrasi Lewat "Orchestrator Notebook" (Sangat Direkomendasikan)
-1. Aktifkan platform Jupyter Server atau akses dari aplikasi editor VSCode.
-2. Navigasikan struktur arsip menuju direktori `notebooks/` lalu buka `03_training_orchestrator.ipynb`.
-3. Tekan mekanisme **Run All Cells** (sebagai alternatif manfaatkan instruksi `Restart Kernel & Run All`).
-4. Semua progres akan dieksekusi transparan—dari transmisi impor konfigurasi *dataset* pada prapemrosesan sampai ringkasan visual *Confusion Matrix* di baris bawah lembaran—tanpa kehadiran penulisan logika fungsional panjang *looping training* di dalam antarmuka blok *notebook*.
-
-### Metode B: Investigasi Menggunakan Ekstensi Uji Modul (*Smoke Test*)
-Untuk melakukan asesmen independensi antar blok `src`, Anda disarankan melangsungkan parameter CLI internal dengan syntax argumen sebagai berikut:
+### 4. Download NLTK Data
 
 ```bash
-# Pengujian modul registri model tanpa data set utama
-python -m src.models.__init__
-
-# Uji coba sistem environment dan penjejakan logs
-python -m src.utils
+python -c "import nltk; nltk.download('punkt'); nltk.download('punkt_tab'); nltk.download('stopwords')"
 ```
 
+### 5. Jalankan Notebook untuk Generate Model
+
+```bash
+cd notebooks
+
+# Notebook 1: EDA + Preprocessing → cleaned_dataset.csv
+jupyter notebook 01_eda_preprocessing.ipynb
+
+# Notebook 2: AutoML + Benchmark → models/*.pkl
+jupyter notebook 02_pycaret_automl.ipynb
+```
+
+> **Catatan:** Pastikan file `PRDECT-ID Dataset.csv` berada di direktori **root** proyek
+> (sejajar dengan folder `src/` dan `notebooks/`). Setelah kedua notebook dijalankan,
+> folder `models/` akan berisi file `.pkl` yang dibutuhkan oleh `app.py`.
+
 ---
 
-## 📁 Infrastruktur Hierarki Output Terekam
+## 🔬 Modul `src/preprocessing.py`
 
-Setiap *run* pelatihan mengkonstruksi struktur data penyimpanan berdasarkan waktu dan jenis iterasi. Bentuk tata letak ini dikalsifikasikan dari tag *Run Name ID* (secara harfiah berupa kompresi `TahunBulanHari_JamMenitDetik_namamodel`). Keempat variabel fundamental berikut tak akan diseminarkan pada ruang publik/server karena filter proteksi git. 
+### Pipeline `clean_text()` — 14 Langkah
 
-- `outputs/logs/<run_name>/log.txt` : Salinan ekstensif rekaman peringatan dan laporan riwayat performa model.
-- `outputs/logs/<run_name>/history_*.json` : Konvergensi data *loss function* secara utuh sebagai rujukan komputasi plot independen.
-- `outputs/checkpoints/<run_name>/` : Taksiran kompresi final parameter bobot sistem paling tajam (`best_*.pt`) dan rekam iterasi yang paling akhir (`last_*.pt`).
-- `outputs/figures/<run_name>/` : Seluruh berkas pemetaan visual performa evaluasi disortir ke folder gambar tanpa mencecerkan akar sistem di file *root*.
+```
+ 1.  Lowercase
+ 2.  Hapus URL (http, https, www)
+ 3.  Hapus HTML/XML tags
+ 4.  Konversi emoji → teks deskriptif  (😊 → "smiling face")
+ 5.  Normalisasi harga kontekstual     (50k → 50 ribu, Rp50.000 → harga)
+ 6.  Hapus angka
+ 7.  Hapus tanda baca & karakter non-alfanumerik
+ 8.  Normalisasi karakter repetisi     (bagussss → baguss)
+ 9.  Normalisasi slang e-commerce      (bgs → bagus, gak → tidak, bgt → banget)
+10.  Hapus token kosong
+11.  Hapus stopword                    (Sastrawi 815 kata + tambahan manual)
+12.  Stemming morfologis               (PySastrawi CachedStemmer)
+13.  Filter token pendek               (min 2 karakter)
+14.  Gabung token & normalisasi whitespace
+```
+
+### Kamus Slang — 140+ Entri
+
+Mencakup kategori:
+- **Negasi & modalitas:** `gak/ga/nggak → tidak`, `blm → belum`, `udah/udh → sudah`
+- **Intensifier:** `bgt/bngt → banget`, `bener → benar`
+- **Konjungsi & preposisi:** `yg → yang`, `dgn → dengan`, `krn → karena`, `tp → tapi`
+- **Penilaian produk:** `bgs → bagus`, `mantep/mantul → mantap`, `joss → bagus`, `ori → original`
+- **Transaksi & pengiriman:** `seller → penjual`, `packing → kemasan`, `ongkir → ongkos kirim`
+- **Sapaan:** `makasih/thx/tq → terima kasih`
+- **Ekspresi:** `wkwk/haha/lol → ""` (dihapus)
+
+### Fungsi Publik
+
+```python
+from src.preprocessing import clean_text, batch_clean, get_stopwords, get_stemmer
+
+# Bersihkan satu teks
+teks_bersih = clean_text("Barang bagussss bgt!! seller ramah 👍")
+# → 'barang baguss banget jual ramah thumbs up'
+
+# Bersihkan seluruh kolom DataFrame
+df["clean_review"] = batch_clean(df["Customer Review"], verbose=True)
+
+# Akses stopwords & stemmer singleton
+stopwords = get_stopwords()   # set of 815+ kata
+stemmer   = get_stemmer()     # Sastrawi CachedStemmer
+```
+
+### Test Mandiri via CLI
+
+```bash
+python src/preprocessing.py
+```
+
+Menjalankan 8 kasus uji dari terminal tanpa perlu membuka Jupyter.
 
 ---
 
-## 🧪 Reprodusibilitas (*Reproducibility*)
+## 🗂️ Contoh Before → After Preprocessing
 
-Repositori membekukan sifat probabilistik deterministik pelatihan dengan penerapan fungsi **`set_seed(42)`**. Kontrol pengacakan ini mereplikasi distribusi angka probabilitas pada sistem basis Python, Numpy Array, kerangka PyTorch, dan interaksi inti akselerator bawaan Nvidia dari CUDNN. Proses iteratif tidak akan menceritakan inkonsistensi yang tidak diinginkan di setiap *re-run* sistem eksperimen yang sama.
+| Teks Mentah | Teks Bersih |
+|-------------|-------------|
+| `Barang bagussss bgt!! Penjual ramah & respon cepat 👍` | `barang baguss banget jual ramah respons cepat thumbs up` |
+| `KECEWA!! gak sesuai deskripsi. Harga 50k tapi jelek bgt` | `kecewa sesuai deskripsi harga ribu buruk banget` |
+| `mantep paten joss, fast delivery, packing aman` | `mantap paten bagus cepat delivery kemas aman` |
+| `bgs banget, harga Rp75.000 worth it. ga ada yg rusak` | `bagus banget harga worth it kemas aman rusak` |
+| `udah 3x beli krn harganya mura tp kualitas oke. Makasih!` | `beli harga murah kualitas terima kasih` |
 
 ---
 
-## ❓ Panduan Analisis Kendala (*Troubleshooting*)
+## 📈 Temuan Utama EDA
 
-1. **`ModuleNotFoundError: No module named 'src'`**
-   - **Solusi:** Kesalahan sering terjadi akibat eksekusi skrip CLI yang berada *di dalam* ruang modulnya sendiri (`cd src`). Pastikan Python senantiasa dijalankan di tingkat parameter direktori atas proyek atau lokasi root (*main working directory*).
+| Aspek | Temuan |
+|-------|--------|
+| **Sentimen** | Sedikit imbalanced — Negatif 52.3% vs Positif 47.7% |
+| **Emosi** | Sangat imbalanced — Happy 32.8% mendominasi, Anger 13.0% paling sedikit |
+| **Panjang teks** | Median 78 karakter / 14 kata; rentang 3 – 1.058 karakter |
+| **Missing values** | 2 baris di kolom `Sentiment` & `Emotion` |
+| **Duplikat** | 7 baris duplikat full-row |
+| **Emoji** | Mayoritas review tanpa emoji; yang ada didominasi 👍 dan 😊 |
 
-2. **Kinerja Pelatihan Cukup Memakan Waktu (Tanpa GPU)**
-   - **Solusi:** Sistem pada file log `[Device: cpu]` mengindikasikan ketiadaan platform paket *Compute Unified Device Architecture (CUDA)* atau instalasi versi PyTorch di mesin pengguna tidak optimal mendeteksi tipe platform CPU/GPU-nya. Upayakan instalasi ulang dari halaman paket [Get Started - Meta PyTorch](https://pytorch.org/get-started/locally/).
+> **Implikasi untuk modeling:** Pertimbangkan `class_weight='balanced'` atau teknik
+> oversampling (SMOTE) pada Checkpoint berikutnya karena kelas Emosi sangat tidak seimbang.
 
-3. **Data Path Error / Fail Load CSV File**
-   - **Solusi:** Pastikan keberadaan rekam valid modul csv di `data/clean/cleaned_dataset.csv`. Konfirmasikan presisi baris `csv_path` internal pada metode `build_full_pipeline()` jika menggunakan alokasi di tempat lain.
+---
+
+
+## 📄 Lisensi
+
+Proyek ini dibuat untuk keperluan akademik — Institut Teknologi Sumatera (ITERA), 2026.
