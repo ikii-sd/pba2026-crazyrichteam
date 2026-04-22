@@ -31,6 +31,7 @@ Namun demikian, di tengah serbuan transaksi yang terjadi secara masif per detik,
 
 **Solusi Pendekatan Analisis Teks (Pipeline NLP):**
 Untuk dapat menembus dan menghancurkan batas kendala dari proses manual linguistik tersebut, kami merancang secara arsitektural sistem algoritma *Natural Language Processing* (NLP) hulu-ke-hilir. Tahap fundamental yang paling krusial diawali dengan fase penyederhanaan serta Pembersihan Teks yang ekstensif.
+Langkah fasa ini mencakup:
 
 ---
 
