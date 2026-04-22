@@ -26,7 +26,7 @@ dan **emosi** (Bahagia, Sedih, Takut, Cinta, Marah) dari ulasan produk e-commerc
 Indonesia menggunakan dataset PRDECT-ID (5.400 ulasan, 29 kategori produk).
 
 **Latar Belakang & Masalah Utama:**
-Industri e-commerce saat ini memiliki ketergantungan yang luar biasa tinggi terhadap ulasan dan keluhan yang ditulis oleh para pelanggannya. Ulasan pembeli berisi sekumpulan simpulan opini yang dinamis, jujur, dan seringkali sangat murni
+Industri e-commerce saat ini memiliki ketergantungan yang luar biasa tinggi terhadap ulasan dan keluhan yang ditulis oleh para pelanggannya. Ulasan pembeli berisi sekumpulan simpulan opini yang dinamis, jujur, dan seringkali sangat murni yang bisa menjadi penentu hidup dan matinya
 
 ---
 
