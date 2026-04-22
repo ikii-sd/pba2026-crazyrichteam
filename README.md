@@ -35,6 +35,7 @@ Langkah fasa ini mencakup:
 - Reduksi pola angka menjadi string.
 - Normalisasi gaya bahasa *slang* internet yang tidak standar menjadi tata bahasa baku.
 - Filterisasi dan penghancuran *noise* yang mengganggu performa perhitungan jarak kata.
+- Penerjemahan leksikografis ikon grafis emoji ke padanan kata teks berbahasa Indonesia.
 
 ---
 
