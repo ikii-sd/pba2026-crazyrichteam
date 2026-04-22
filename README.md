@@ -27,7 +27,7 @@ Indonesia menggunakan dataset PRDECT-ID (5.400 ulasan, 29 kategori produk).
 
 **Latar Belakang & Masalah Utama:**
 Industri e-commerce saat ini memiliki ketergantungan yang luar biasa tinggi terhadap ulasan dan keluhan yang ditulis oleh para pelanggannya. Ulasan pembeli berisi sekumpulan simpulan opini yang dinamis, jujur, dan seringkali sangat murni yang bisa menjadi penentu hidup dan matinya sebuah unit usaha reputasi dari suatu toko.
-Namun demikian, di tengah serbuan transaksi yang terjadi secara masif per detik, menganalisis apalagi memproses hingga membaca manual jutaan komentar pengguna
+Namun demikian, di tengah serbuan transaksi yang terjadi secara masif per detik, menganalisis apalagi memproses hingga membaca manual jutaan komentar pengguna adalah pekerjaan yang memakan ratusan jam dan sangatlah mustahil secara manusiawi.
 
 ---
 
