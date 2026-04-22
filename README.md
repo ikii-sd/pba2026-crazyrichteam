@@ -30,7 +30,7 @@ Industri e-commerce saat ini memiliki ketergantungan yang luar biasa tinggi terh
 Namun demikian, di tengah serbuan transaksi yang terjadi secara masif per detik, menganalisis apalagi memproses hingga membaca manual jutaan komentar pengguna adalah pekerjaan yang memakan ratusan jam dan sangatlah mustahil secara manusiawi.
 
 **Solusi Pendekatan Analisis Teks (Pipeline NLP):**
-Untuk dapat menembus dan menghancurkan batas kendala dari proses manual linguistik tersebut, kami merancang secara arsitektural sistem algoritma *Natural Language Processing* (NLP) hulu-ke-hilir. Tahap fundamental yang paling krusial diawali dengan
+Untuk dapat menembus dan menghancurkan batas kendala dari proses manual linguistik tersebut, kami merancang secara arsitektural sistem algoritma *Natural Language Processing* (NLP) hulu-ke-hilir. Tahap fundamental yang paling krusial diawali dengan fase penyederhanaan serta Pembersihan Teks yang ekstensif.
 
 ---
 
