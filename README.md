@@ -33,6 +33,7 @@ Namun demikian, di tengah serbuan transaksi yang terjadi secara masif per detik,
 Untuk dapat menembus dan menghancurkan batas kendala dari proses manual linguistik tersebut, kami merancang secara arsitektural sistem algoritma *Natural Language Processing* (NLP) hulu-ke-hilir. Tahap fundamental yang paling krusial diawali dengan fase penyederhanaan serta Pembersihan Teks yang ekstensif.
 Langkah fasa ini mencakup:
 - Reduksi pola angka menjadi string.
+- Normalisasi gaya bahasa *slang* internet yang tidak standar menjadi tata bahasa baku.
 
 ---
 
