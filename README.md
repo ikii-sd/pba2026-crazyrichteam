@@ -38,6 +38,8 @@ Langkah fasa ini mencakup:
 - Penerjemahan leksikografis ikon grafis emoji ke padanan kata teks berbahasa Indonesia.
 Pada titik tahapan prapemrosesan ini rampung dan selesai dengan aman, koleksi teks bersih ini baru akan secara aman disusupkan dan direpresentasikan secara matematis ke dalam model komputasi neural network modern.
 
+**Rincian Terstruktur Profil Dataset PRDECT-ID:**
+
 ---
 
 ## 📐 Arsitektur Modular
