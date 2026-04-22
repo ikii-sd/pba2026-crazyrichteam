@@ -43,7 +43,7 @@ Dataset PRDECT-ID yang kami jadikan pijakan tumpuan ruang latih ini terbilang sa
 Pada intinya secara spesifik teknikal, sasaran parameter variabel kelas prediksi sistem terpadu kami mencakup fungsi *dual-core* ini:
 1. Indeks probabilitas Sentimen Biner ekstrem untuk memantau polaritas daya tarik komersial.
 2. Identifikasi model klaster multidimensi berdasar ke enam spektrum Emosional kelas target logis.
-Sebagai garansi dari akomodir model,
+Sebagai garansi dari akomodir model, setiap baris dokumen dari pustaka ulasan ini
 
 ---
 
