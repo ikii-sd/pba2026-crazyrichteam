@@ -10,15 +10,14 @@ Modul tersedia:
     - model         : build_model(config), get_optimizer, get_scheduler, count_params
     - models/       : registry multi-varian (baseline, improved, large)
     - train         : training pipeline lengkap (fit, validation)
-    - utils         : helper functions (seed, json, metrics, plotting)
+    - utils         : helper functions & run environment manager
+    - logger        : setup sentral logging pipeline (ke terminal + file run)
 
 Contoh penggunaan:
-    from src.preprocessing import clean_text, batch_clean
+    from src.logger import get_logger
+    from src.utils import setup_run_env
     from src.dataloader import build_full_pipeline
-    from src.model import build_model, get_optimizer, get_scheduler, model_summary
-    from src.models import build_model as build_model_v, list_models, compare_models
     from src.train import fit
-    from src.utils import set_seed, plot_training_curves
 """
 
 from src.preprocessing import clean_text, batch_clean, get_stopwords, get_stemmer
@@ -43,6 +42,7 @@ from src.model import (
 from src.train import train_one_epoch, validate, fit
 from src.utils import (
     set_seed,
+    setup_run_env,
     ensure_dir,
     save_json,
     load_json,
@@ -51,6 +51,7 @@ from src.utils import (
     plot_training_curves,
     plot_confusion_matrix,
 )
+from src.logger import get_logger, setup_run_logger
 
 __all__ = [
     # preprocessing
@@ -78,7 +79,8 @@ __all__ = [
     "train_one_epoch",
     "validate",
     "fit",
-    # utils
+    # utils & logger
+    "setup_run_env",
     "set_seed",
     "ensure_dir",
     "save_json",
@@ -87,6 +89,8 @@ __all__ = [
     "compute_metrics",
     "plot_training_curves",
     "plot_confusion_matrix",
+    "get_logger",
+    "setup_run_logger",
 ]
-__version__ = "1.3.0"
+__version__ = "1.4.0"
 __author__ = "Crazy Rich Team — PBA 2026"
