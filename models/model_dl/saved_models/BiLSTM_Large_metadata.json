@@ -1,0 +1,16 @@
+{
+  "experiment": "BiLSTM_Large",
+  "model_type": "bilstm",
+  "embedding_dim": 128,
+  "dropout": 0.5,
+  "learning_rate": 0.0003,
+  "vocab_size": 6155,
+  "num_sentiment_classes": 2,
+  "num_emotion_classes": 5,
+  "total_params": 4865415,
+  "training_time_min": 4.87,
+  "hidden_dim": 256,
+  "num_layers": 3,
+  "num_filters": null,
+  "kernel_sizes": null
+}

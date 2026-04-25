@@ -1,0 +1,20 @@
+{
+  "experiment": "TextCNN",
+  "model_type": "textcnn",
+  "embedding_dim": 128,
+  "dropout": 0.4,
+  "learning_rate": 0.001,
+  "vocab_size": 6155,
+  "num_sentiment_classes": 2,
+  "num_emotion_classes": 5,
+  "total_params": 1035015,
+  "training_time_min": 0.25,
+  "hidden_dim": null,
+  "num_layers": null,
+  "num_filters": 128,
+  "kernel_sizes": [
+    3,
+    4,
+    5
+  ]
+}

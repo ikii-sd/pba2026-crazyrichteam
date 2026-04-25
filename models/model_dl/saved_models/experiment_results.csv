@@ -1,0 +1,5 @@
+experiment,model_type,sent_accuracy,sent_f1_macro,sent_f1_weighted,emo_accuracy,emo_f1_macro,emo_f1_weighted,training_time_min,total_params,model_path
+BiLSTM_Baseline,bilstm,0.8609,0.8608,0.8609,0.5121,0.4354,0.4829,0.3,1085831,D:\pba2026-crazyrichteam\models\model_dl\saved_models\BiLSTM_Baseline.pt
+BiLSTM_Improved,bilstm,0.8553,0.8551,0.8553,0.5083,0.4658,0.4999,1.9,3288455,D:\pba2026-crazyrichteam\models\model_dl\saved_models\BiLSTM_Improved.pt
+BiLSTM_Large,bilstm,0.8553,0.8542,0.8548,0.5121,0.4240,0.4828,4.9,4865415,D:\pba2026-crazyrichteam\models\model_dl\saved_models\BiLSTM_Large.pt
+TextCNN,textcnn,0.8479,0.8468,0.8474,0.5399,0.5077,0.5388,0.2,1035015,D:\pba2026-crazyrichteam\models\model_dl\saved_models\TextCNN.pt
