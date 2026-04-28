@@ -318,4 +318,4 @@ Menjalankan 8 kasus uji dari terminal tanpa perlu membuka Jupyter.
 
 Proyek ini dibuat untuk keperluan akademik — Institut Teknologi Sumatera (ITERA), 2026.
 
-https:
+https:/
