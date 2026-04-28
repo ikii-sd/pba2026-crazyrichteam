@@ -1,13 +1,40 @@
 # 🛍️ Analisis Sentimen & Emosi Ulasan E-Commerce Bahasa Indonesia
 
-> **Mata Kuliah:** Pengolahan Bahasa Alami (PBA) — 2026 <br>
-> **Tim:** Crazy Rich Team <br>
-> **Dataset:** [PRDECT-ID](https://www.kaggle.com/datasets/jocelyndumlao/prdect-id-indonesian-emotion-classification/data) — Indonesian E-Commerce Product Reviews Dataset <br>
-> **🚀 Live Demos:**
-> - **[ML Model](https://huggingface.co/spaces/Hash-SD/ecommerce-sentiment-analysis)** — Scikit-learn based sentiment analyzer
-> - **[Deep Learning Model](https://huggingface.co/spaces/Hash-SD/ecommerce-sentiment-emotion-dl)** — PyTorch BiLSTM sentiment & emotion analyzer
+<p align="left">
+  <a href="https://huggingface.co">
+    <img src="https://githubusercontent.com" width="45" alt="PyTorch">
+  </a>
+  <a href="https://huggingface.co">
+    <img src="https://githubusercontent.com" width="45" alt="ScikitLearn">
+  </a>
+  <a href="https://kaggle.com">
+    <img src="https://githubusercontent.com" width="45" alt="Kaggle">
+  </a>
+  <a href="https://arxiv.org">
+    <img src="https://githubusercontent.com" width="45" alt="Arxiv">
+  </a>
+</p>
+
+Proyek klasifikasi teks ulasan e-commerce menggunakan pendekatan **Multi-Task BiLSTM** dan **AutoML Benchmarking** untuk mendeteksi sentimen serta emosi secara simultan.
 
 ---
+
+### 📖 Informasi Proyek
+*   **🎓 Mata Kuliah:** Pengolahan Bahasa Alami (PBA) — 2026
+*   **💎 Nama Tim:** Crazy Rich Team
+*   **📊 Dataset:** [PRDECT-ID](https://kaggle.com)
+*   **📄 Paper:** [arXiv:2604.24720](https://arxiv.org)
+
+---
+
+### 🚀 Live Demos
+Klik link di bawah ini untuk mencoba model secara interaktif:
+
+*   🤖 **[Deep Learning Model](https://huggingface.co)** — Sentimen & Emosi (BiLSTM)
+*   ⚡ **[Machine Learning Model](https://huggingface.co)** — Sentimen Dasar (Scikit-Learn)
+
+---
+
 
 ## 👥 Anggota Kelompok 7
 
@@ -316,6 +343,4 @@ Menjalankan 8 kasus uji dari terminal tanpa perlu membuka Jupyter.
 
 ## 📄 Lisensi
 
-Proyek ini dibuat untuk keperluan akademik — Institut Teknologi Sumatera (ITERA), 2026.
-
-https://arxiv.org/abs/2604.24720
+Proyek ini dibuat untuk keperluan akademik yang dibantu oleh Ai bernama Claude.
