@@ -315,7 +315,6 @@ Menjalankan 8 kasus uji dari terminal tanpa perlu membuka Jupyter.
 
 
 ## 📄 Lisensi
-
 Proyek ini dibuat untuk keperluan akademik — Institut Teknologi Sumatera (ITERA), 2026.
 
-https://arxiv.org/abs/2604.24720
+Kode dalam repository ini dibuat dan dikembangkan dengan bantuan **Claude AI** sebagai asisten dalam proses penulisan, refactoring, dan penyusunan struktur program.Kode 
